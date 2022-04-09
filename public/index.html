@@ -3,11 +3,12 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
             * {
                 margin: 0;
                 padding: 0;
-                font-family: "Ubuntu", sans-serif;
+                scroll-behavior: smooth;
+                font-family: "Inter", sans-serif;
             }
             body {
                 background: url("./img.jpg") no-repeat;
@@ -153,16 +154,64 @@
                 block-size: 14px;
                 display: block
             }
+
+            .memberlogo-img {
+                max-width: 55px;
+                max-height: 48px;
+                border-radius: 100%;
+            }
+
+            .faris {
+                align-items: center;
+                padding: 7px 10px;
+                box-shadow: 0px 4px 8px hsla(0, 0%, 0%, .26);
+                background: #101010;
+                border-radius: 6px;
+            }
+
+            .faris .cre {
+                margin: 0 0 0 8px;
+            }
+
+            .memberstate {
+                border: #00a884 1.3px solid;
+                color: #00a884;
+                border-radius: 4px;
+                margin-left: auto;
+            }
+            
+            .inner-memberstate {
+                border-radius: 4px;
+                background: transparent;
+                font-size: 14px;
+                padding: 2px;
+            }
+
+            .context {
+                margin: 6px 0;
+            }
+            .separator {
+                background: rgb(165, 165, 165);
+                height: 0.5px;
+                margin: 20px 0;
+            }
+            .kl {
+                margin: 7px 0 !important;
+            }
         </style>
     </head>
     <body>
         <header class="tp flex">
             <div class="innertp flex">
                 <div class="buttons flex">
-                    <div class="btnsty flex">
+                    <div class="logo flex" style="align-items: center;">
+                        <img src="./logo.jfif" style="max-width: 32px;border-radius: 100%;">
+                        <text class="unselectable" style="margin: 0 8px 0 8px;font-size: 13px;">GOK</text>
+                    </div>
+                    <a class="btnsty flex" href="#mem" style="text-decoration: none;color: currentColor;">
                         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 0.875C5.49797 0.875 3.875 2.49797 3.875 4.5C3.875 6.15288 4.98124 7.54738 6.49373 7.98351C5.2997 8.12901 4.27557 8.55134 3.50407 9.31167C2.52216 10.2794 2.02502 11.72 2.02502 13.5999C2.02502 13.8623 2.23769 14.0749 2.50002 14.0749C2.76236 14.0749 2.97502 13.8623 2.97502 13.5999C2.97502 11.8799 3.42786 10.7206 4.17091 9.9883C4.91536 9.25463 6.02674 8.87499 7.49995 8.87499C8.97317 8.87499 10.0846 9.25463 10.8291 9.98831C11.5721 10.7206 12.025 11.8799 12.025 13.5999C12.025 13.8623 12.2376 14.0749 12.5 14.0749C12.7623 14.075 12.975 13.8623 12.975 13.6C12.975 11.72 12.4778 10.2794 11.4959 9.31166C10.7244 8.55135 9.70025 8.12903 8.50625 7.98352C10.0187 7.5474 11.125 6.15289 11.125 4.5C11.125 2.49797 9.50203 0.875 7.5 0.875ZM4.825 4.5C4.825 3.02264 6.02264 1.825 7.5 1.825C8.97736 1.825 10.175 3.02264 10.175 4.5C10.175 5.97736 8.97736 7.175 7.5 7.175C6.02264 7.175 4.825 5.97736 4.825 4.5Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                         <text class="unselectable" style="font-size: 14px;">Members</text>
-                    </div>
+                    </a>
                 </div>
 
             </div>
@@ -176,8 +225,118 @@
             </div>
         </section>
         <section style="padding: 20px;">
-            <section class="members">
-                Hi
+            <section class="members" id="mem">
+                <div class="context">
+                    <text>Creator - 1</text>
+                </div>
+                <div class="faris flex">
+                    <div class="memberlogo flex">
+                        <img src="./far_img.png" class="memberlogo-img">
+                    </div>
+                    <div class="membername flex">
+                        <text class="cre">Faris</text>
+                    </div>
+                    <div class="memberstate flex">
+                        <div class="inner-memberstate">
+                            <text>Admin</text>
+                        </div>
+                    </div>
+                </div>
+                <div class="separator"></div>
+                <div class="context">
+                    <text>Members - 7</text>
+                </div>
+                <div class="faris flex kl">
+                    <div class="memberlogo flex">
+                        <img src="./na_img.png" class="memberlogo-img">
+                    </div>
+                    <div class="membername flex">
+                        <text class="cre">Nabil</text>
+                    </div>
+                    <div class="memberstate flex">
+                        <div class="inner-memberstate">
+                            <text>Member</text>
+                        </div>
+                    </div>
+                </div>
+                <div class="faris flex kl">
+                    <div class="memberlogo flex">
+                        <img src="./uk.png" class="memberlogo-img">
+                    </div>
+                    <div class="membername flex">
+                        <text class="cre">Fatih</text>
+                    </div>
+                    <div class="memberstate flex">
+                        <div class="inner-memberstate">
+                            <text>Member</text>
+                        </div>
+                    </div>
+                </div>
+                <div class="faris flex kl">
+                    <div class="memberlogo flex">
+                        <img src="./uk.png" class="memberlogo-img">
+                    </div>
+                    <div class="membername flex">
+                        <text class="cre">Faiz</text>
+                    </div>
+                    <div class="memberstate flex">
+                        <div class="inner-memberstate">
+                            <text>Member</text>
+                        </div>
+                    </div>
+                </div>
+                <div class="faris flex kl">
+                    <div class="memberlogo flex">
+                        <img src="./fa_img.png" class="memberlogo-img">
+                    </div>
+                    <div class="membername flex">
+                        <text class="cre">Fadel</text>
+                    </div>
+                    <div class="memberstate flex">
+                        <div class="inner-memberstate">
+                            <text>Member</text>
+                        </div>
+                    </div>
+                </div>
+                <div class="faris flex kl">
+                    <div class="memberlogo flex">
+                        <img src="./ha_img.png" class="memberlogo-img">
+                    </div>
+                    <div class="membername flex">
+                        <text class="cre">Harun</text>
+                    </div>
+                    <div class="memberstate flex">
+                        <div class="inner-memberstate">
+                            <text>Member</text>
+                        </div>
+                    </div>
+                </div>
+                <div class="faris flex kl">
+                    <div class="memberlogo flex">
+                        <img src="./uk.png" class="memberlogo-img">
+                    </div>
+                    <div class="membername flex">
+                        <text class="cre">Rasya</text>
+                    </div>
+                    <div class="memberstate flex">
+                        <div class="inner-memberstate">
+                            <text>Member</text>
+                        </div>
+                    </div>
+                </div>
+                <div class="faris flex kl">
+                    <div class="memberlogo flex">
+                        <img src="./uk.png" class="memberlogo-img">
+                    </div>
+                    <div class="membername flex">
+                        <text class="cre">Nadim</text>
+                    </div>
+                    <div class="memberstate flex">
+                        <div class="inner-memberstate">
+                            <text>Member</text>
+                        </div>
+                    </div>
+                </div>
             </section>
         </section>
     </body>
