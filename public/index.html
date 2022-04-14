@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>GOK - Home</title>
-        <link rel="icon" href="./logo.jfif">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="./logo.jfif">
+        <itle>GOK - Home</title>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
             * {
@@ -12,6 +12,11 @@
                 scroll-behavior: smooth;
                 font-family: "Inter", sans-serif;
             }
+
+            *, ::after, ::before {
+                box-sizing: border-box;
+            }
+
             body {
                 background: url("./img.jpg") no-repeat;
                 background-attachment: fixed;
@@ -20,7 +25,7 @@
                 color: #fff;
             }
             div.box.one {
-                background: #212121;
+                background: #000;
                 border-radius: 4px;
                 padding: 8px;
                 width: 39vw;
@@ -61,7 +66,7 @@
             }
 
             .tp {
-                background-color: #212121;
+                background-color: #000;
                 block-size: 50px;
                 width: 100vw;
                 border-bottom: #101010 1.5px solid;
@@ -69,6 +74,9 @@
                 position: fixed;
                 padding: 5px 8px 5px 8px;
                 box-sizing: border-box;
+                top: 0;
+                transition: all 550ms linear;
+                z-index: 9;
             }
 
             .innertp {
@@ -80,26 +88,21 @@
             }
 
             .btnsty {
-                padding: 5px 10px;
-                border-radius: 4px;
-                border: transparent 1px solid;
+                padding: 15px 9px;
+                border-bottom: 2px transparent solid;
                 transition: 87ms all ease;
+                overflow: hidden;
             }
             .btnsty svg {
                 margin: 0 5px 0 0;
             }
 
             .btnsty:hover {
-                background: hsla(0, 0%, 100%, 0.084);
-                border: transparent 1px solid;
-                transition: all 83ms ease;
+                border-bottom: #fff 2px solid;
             }
 
             .btnsty:active {
-                background: hsla(0, 0%, 100%, 0.033);
-                border: 1px solid;
-                border-color: hsla(0, 0%, 100%, 6.98%);
-                color: hsl(0deg 0% 100% / 79%);
+                border-bottom: 2px #00a884 solid;
                 transition: all 83ms ease;
             }
 
@@ -117,8 +120,9 @@
                 height: 100vh;
                 box-shadow: 0px 4px 8px hsla(0, 0%, 0%, .26);
                 margin: auto;
-                overflow: auto;
+                transition: 320ms;
                 padding: 18px;
+                overflow: auto;
             }
 
             @supports(overflow:overlay) {
@@ -168,8 +172,8 @@
                 align-items: center;
                 padding: 7px 10px;
                 box-shadow: 0px 4px 8px hsla(0, 0%, 0%, .26);
-                background: #101010;
-                border-radius: 6px;
+                background: #1a1a1a;
+                border-radius: 4px;
             }
 
             .faris .cre {
@@ -178,20 +182,41 @@
 
             .memberstate {
                 border: #00a884 1.3px solid;
-                color: #00a884;
-                border-radius: 4px;
+                color: #000;
+                border-radius: 7px;
                 margin-left: auto;
             }
             
             .inner-memberstate {
-                border-radius: 4px;
-                background: transparent;
+                border-radius: 5px;
+                background: #00a884;
                 font-size: 14px;
-                padding: 2px;
+                padding: 4px;
             }
 
             .context {
-                margin: 6px 0;
+                align-items: center;
+                padding: 7px 10px;
+                box-shadow: 0px 4px 8px hsla(0, 0%, 0%, .26);
+                background: #1a1a1a;
+                transition: 167ms ease;
+                border-radius: 4px;
+            }
+
+            .context:hover {
+                background: rgba(255, 255, 255, 0.073);
+                transition: 167ms ease;
+            }
+
+            .context #chevron {
+                margin: 0 0 0 5px;
+                transition: all 320ms linear;
+                transform: rotate(180deg);
+                margin-left: auto;
+            }
+
+            .context #member {
+                margin: 0 5px 0 0;
             }
             .separator {
                 background: rgb(165, 165, 165);
@@ -201,18 +226,71 @@
             .kl {
                 margin: 7px 0 !important;
             }
+
+            .expanded {
+                height: 0;
+                transition: 87ms;
+                opacity: 0;
+                overflow: hidden;
+            }
+
+            .rotated {
+                transform: rotate(0deg) !important;
+                transition: all 320ms linear;
+            }
+
+            .footer {
+                font-size: .875rem;
+                background: #000;
+                border-top: 1px solid #333;
+                padding: calc(1.5 * 24px);
+            }
+
+            .heightw {
+                height: auto;
+                transition: all 320ms;
+            }
+            .collapsable {
+                transition: 83ms;
+                opacity: 1;
+            }
+
+            .oomagaa {
+                bottom: -1000px;
+                transition: 335ms all linear;
+            }
+
+            .showOmaga {
+                bottom: -23px;
+                transition: 335ms all linear;
+            }
+
+            .hideheader {
+                top: -1000px !important;
+                transition: all 550ms linear;
+            }
+            .svgtwt {
+                display: flex;
+                justify-content: end;
+                color: #ababab;
+                margin: 0 0 0 auto;
+                transition: 167ms;
+            }
+
+            .svgtwt:hover {
+                color: #fff;
+                transition: 167ms;
+            }
         </style>
     </head>
     <body>
-        <header class="tp flex">
+        <header class="tp flex" id="header">
             <div class="innertp flex">
                 <div class="buttons flex">
-                    <div class="logo flex" style="align-items: center;">
-                        <img src="./logo.jfif" style="max-width: 32px;border-radius: 100%;">
-                        <text class="unselectable" style="margin: 0 8px 0 8px;font-size: 13px;">GOK</text>
-                    </div>
-                    <a class="btnsty flex" href="#mem" style="text-decoration: none;color: currentColor;">
-                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 0.875C5.49797 0.875 3.875 2.49797 3.875 4.5C3.875 6.15288 4.98124 7.54738 6.49373 7.98351C5.2997 8.12901 4.27557 8.55134 3.50407 9.31167C2.52216 10.2794 2.02502 11.72 2.02502 13.5999C2.02502 13.8623 2.23769 14.0749 2.50002 14.0749C2.76236 14.0749 2.97502 13.8623 2.97502 13.5999C2.97502 11.8799 3.42786 10.7206 4.17091 9.9883C4.91536 9.25463 6.02674 8.87499 7.49995 8.87499C8.97317 8.87499 10.0846 9.25463 10.8291 9.98831C11.5721 10.7206 12.025 11.8799 12.025 13.5999C12.025 13.8623 12.2376 14.0749 12.5 14.0749C12.7623 14.075 12.975 13.8623 12.975 13.6C12.975 11.72 12.4778 10.2794 11.4959 9.31166C10.7244 8.55135 9.70025 8.12903 8.50625 7.98352C10.0187 7.5474 11.125 6.15289 11.125 4.5C11.125 2.49797 9.50203 0.875 7.5 0.875ZM4.825 4.5C4.825 3.02264 6.02264 1.825 7.5 1.825C8.97736 1.825 10.175 3.02264 10.175 4.5C10.175 5.97736 8.97736 7.175 7.5 7.175C6.02264 7.175 4.825 5.97736 4.825 4.5Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    <a class="btnsty flex" onclick="tgg();" style="text-decoration: none;color: currentColor;">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.49579 8C9.32421 8 9.99579 8.67157 9.99579 9.5L9.995 10.2484C10.0979 12.0849 8.68334 13.0008 6.06019 13.0008C3.44552 13.0008 2 12.0969 2 10.2746V9.5C2 8.67157 2.67157 8 3.5 8H8.49579ZM12.4964 8C13.3248 8 13.9964 8.67157 13.9964 9.5L13.9956 10.0266C14.0861 11.674 12.8362 12.5 10.5516 12.5C10.2415 12.5 9.94993 12.4849 9.67766 12.4547C9.96832 12.1873 10.1848 11.8681 10.3228 11.4974L10.5516 11.5C12.3358 11.5 13.0491 11.0286 12.9964 10.054V9.5C12.9964 9.22386 12.7725 9 12.4964 9L10.4328 8.99998C10.3315 8.60667 10.1137 8.26018 9.81823 7.99959L12.4964 8ZM8.49579 9H3.5C3.22386 9 3 9.22386 3 9.5V10.2746C3 11.4206 3.92794 12.0008 6.06019 12.0008C8.18397 12.0008 9.05983 11.4337 8.99579 10.2763V9.5C8.99579 9.22386 8.77193 9 8.49579 9ZM6 2C7.38094 2 8.50041 3.11947 8.50041 4.5004C8.50041 5.88134 7.38094 7.00081 6 7.00081C4.61906 7.00081 3.49959 5.88134 3.49959 4.5004C3.49959 3.11947 4.61906 2 6 2ZM11 3C12.1046 3 13 3.89543 13 5C13 6.10457 12.1046 7 11 7C9.89543 7 9 6.10457 9 5C9 3.89543 9.89543 3 11 3ZM6 3C5.17135 3 4.4996 3.67175 4.4996 4.5004C4.4996 5.32906 5.17135 6.00081 6 6.00081C6.82865 6.00081 7.5004 5.32906 7.5004 4.5004C7.5004 3.67175 6.82865 3 6 3ZM11 4C10.4477 4 10 4.44772 10 5C10 5.55228 10.4477 6 11 6C11.5523 6 12 5.55228 12 5C12 4.44772 11.5523 4 11 4Z" fill="currentColor"/>
+                        </svg>
                         <text class="unselectable" style="font-size: 14px;">Members</text>
                     </a>
                 </div>
@@ -227,9 +305,22 @@
                 </div>
             </div>
         </section>
-        <section style="padding: 20px;">
+        <section class="oomagaa" style="padding: 20px;position: fixed;width: 100%;" id="vba">
             <section class="members" id="mem">
-                <div class="context">
+                <div class="context flex" onclick="tgg();" style="align-items: center;margin: 0 0 8px 0;">
+                    <div class="logobox flex" style="margin:0 7px 0 0;width: 50px;height: 50px;align-items:center;justify-content: center;border-radius: 100%;background: rgba(0, 0, 0, 0.737);">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.58859 2.71569L2.64645 2.64645C2.82001 2.47288 3.08944 2.4536 3.28431 2.58859L3.35355 2.64645L8 7.293L12.6464 2.64645C12.8417 2.45118 13.1583 2.45118 13.3536 2.64645C13.5488 2.84171 13.5488 3.15829 13.3536 3.35355L8.707 8L13.3536 12.6464C13.5271 12.82 13.5464 13.0894 13.4114 13.2843L13.3536 13.3536C13.18 13.5271 12.9106 13.5464 12.7157 13.4114L12.6464 13.3536L8 8.707L3.35355 13.3536C3.15829 13.5488 2.84171 13.5488 2.64645 13.3536C2.45118 13.1583 2.45118 12.8417 2.64645 12.6464L7.293 8L2.64645 3.35355C2.47288 3.17999 2.4536 2.91056 2.58859 2.71569L2.64645 2.64645L2.58859 2.71569Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <text>Close</text>
+                </div>
+                <div class="context flex" style="align-items: center;margin: 0 0 8px 0;">
+                    <div class="logobox flex" style="margin:0 7px 0 0;width: 50px;height: 50px;align-items:center;justify-content: center;border-radius: 100%;background: rgba(0, 0, 0, 0.737);">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.64728 2.14638C7.84268 1.95105 8.15946 1.95123 8.35464 2.14678C9.5947 3.38913 10.9689 4 12.5 4C12.7761 4 13 4.22386 13 4.5V7.50126C13 10.7196 11.3587 12.9075 8.15811 13.9743C8.05548 14.0086 7.94452 14.0086 7.84189 13.9743C4.64126 12.9075 3 10.7196 3 7.50126V4.5C3 4.22386 3.22386 4 3.5 4C5.02923 4 6.40416 3.38902 7.64728 2.14638ZM8.00042 3.18917C6.81393 4.25491 5.47941 4.86879 4 4.98118V7.50126C4 8.9349 4.36269 10.0655 5.02127 10.9453C5.65858 11.7967 6.62953 12.4885 8 12.9715C9.37047 12.4885 10.3414 11.7967 10.9787 10.9453C11.6373 10.0655 12 8.9349 12 7.50126V4.98121C10.5195 4.86895 9.18521 4.25528 8.00042 3.18917Z" fill="currentColor"/>
+                        </svg>
+                    </div>
                     <text>Creator - 1</text>
                 </div>
                 <div class="faris flex">
@@ -246,101 +337,146 @@
                     </div>
                 </div>
                 <div class="separator"></div>
-                <div class="context">
+                <div class="context flex" style="align-items: center;" id="con">
+                    <div class="logobox flex" style="margin:0 7px 0 0;width: 50px;height: 50px;align-items:center;justify-content: center;border-radius: 100%;background: rgba(0, 0, 0, 0.737);">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.49579 8C9.32421 8 9.99579 8.67157 9.99579 9.5L9.995 10.2484C10.0979 12.0849 8.68334 13.0008 6.06019 13.0008C3.44552 13.0008 2 12.0969 2 10.2746V9.5C2 8.67157 2.67157 8 3.5 8H8.49579ZM12.4964 8C13.3248 8 13.9964 8.67157 13.9964 9.5L13.9956 10.0266C14.0861 11.674 12.8362 12.5 10.5516 12.5C10.2415 12.5 9.94993 12.4849 9.67766 12.4547C9.96832 12.1873 10.1848 11.8681 10.3228 11.4974L10.5516 11.5C12.3358 11.5 13.0491 11.0286 12.9964 10.054V9.5C12.9964 9.22386 12.7725 9 12.4964 9L10.4328 8.99998C10.3315 8.60667 10.1137 8.26018 9.81823 7.99959L12.4964 8ZM8.49579 9H3.5C3.22386 9 3 9.22386 3 9.5V10.2746C3 11.4206 3.92794 12.0008 6.06019 12.0008C8.18397 12.0008 9.05983 11.4337 8.99579 10.2763V9.5C8.99579 9.22386 8.77193 9 8.49579 9ZM6 2C7.38094 2 8.50041 3.11947 8.50041 4.5004C8.50041 5.88134 7.38094 7.00081 6 7.00081C4.61906 7.00081 3.49959 5.88134 3.49959 4.5004C3.49959 3.11947 4.61906 2 6 2ZM11 3C12.1046 3 13 3.89543 13 5C13 6.10457 12.1046 7 11 7C9.89543 7 9 6.10457 9 5C9 3.89543 9.89543 3 11 3ZM6 3C5.17135 3 4.4996 3.67175 4.4996 4.5004C4.4996 5.32906 5.17135 6.00081 6 6.00081C6.82865 6.00081 7.5004 5.32906 7.5004 4.5004C7.5004 3.67175 6.82865 3 6 3ZM11 4C10.4477 4 10 4.44772 10 5C10 5.55228 10.4477 6 11 6C11.5523 6 12 5.55228 12 5C12 4.44772 11.5523 4 11 4Z" fill="currentColor"/>
+                        </svg>
+                    </div>
                     <text>Members - 7</text>
+                    <svg id="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.20041 5.73966C3.48226 5.43613 3.95681 5.41856 4.26034 5.70041L8 9.22652L11.7397 5.70041C12.0432 5.41856 12.5177 5.43613 12.7996 5.73966C13.0815 6.0432 13.0639 6.51775 12.7603 6.7996L8.51034 10.7996C8.22258 11.0668 7.77743 11.0668 7.48967 10.7996L3.23966 6.7996C2.93613 6.51775 2.91856 6.0432 3.20041 5.73966Z" fill="currentColor"/>
+                    </svg>
                 </div>
-                <div class="faris flex kl">
-                    <div class="memberlogo flex">
-                        <img src="./na_img.png" class="memberlogo-img">
-                    </div>
-                    <div class="membername flex">
-                        <text class="cre">Nabil</text>
-                    </div>
-                    <div class="memberstate flex">
-                        <div class="inner-memberstate">
-                            <text>Member</text>
+                <div class="collapsable" id="cop">
+                    <div class="faris flex kl">
+                        <div class="memberlogo flex">
+                            <img src="./na_img.png" class="memberlogo-img">
+                        </div>
+                        <div class="membername flex">
+                            <text class="cre">Nabil</text>
+                        </div>
+                        <div class="memberstate flex">
+                            <div class="inner-memberstate">
+                                <text>Member</text>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="faris flex kl">
-                    <div class="memberlogo flex">
-                        <img src="./uk.png" class="memberlogo-img">
-                    </div>
-                    <div class="membername flex">
-                        <text class="cre">Fatih</text>
-                    </div>
-                    <div class="memberstate flex">
-                        <div class="inner-memberstate">
-                            <text>Member</text>
+                    <div class="faris flex kl">
+                        <div class="memberlogo flex">
+                            <img src="./uk.png" class="memberlogo-img">
+                        </div>
+                        <div class="membername flex">
+                            <text class="cre">Fatih</text>
+                        </div>
+                        <div class="memberstate flex">
+                            <div class="inner-memberstate">
+                                <text>Member</text>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="faris flex kl">
-                    <div class="memberlogo flex">
-                        <img src="./uk.png" class="memberlogo-img">
-                    </div>
-                    <div class="membername flex">
-                        <text class="cre">Faiz</text>
-                    </div>
-                    <div class="memberstate flex">
-                        <div class="inner-memberstate">
-                            <text>Member</text>
+                    <div class="faris flex kl">
+                        <div class="memberlogo flex">
+                            <img src="./uk.png" class="memberlogo-img">
+                        </div>
+                        <div class="membername flex">
+                            <text class="cre">Faiz</text>
+                        </div>
+                        <div class="memberstate flex">
+                            <div class="inner-memberstate">
+                                <text>Member</text>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="faris flex kl">
-                    <div class="memberlogo flex">
-                        <img src="./fa_img.png" class="memberlogo-img">
-                    </div>
-                    <div class="membername flex">
-                        <text class="cre">Fadel</text>
-                    </div>
-                    <div class="memberstate flex">
-                        <div class="inner-memberstate">
-                            <text>Member</text>
+                    <div class="faris flex kl">
+                        <div class="memberlogo flex">
+                            <img src="./fa_img.png" class="memberlogo-img">
+                        </div>
+                        <div class="membername flex">
+                            <text class="cre">Fadel</text>
+                        </div>
+                        <div class="memberstate flex">
+                            <div class="inner-memberstate">
+                                <text>Member</text>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="faris flex kl">
-                    <div class="memberlogo flex">
-                        <img src="./ha_img.png" class="memberlogo-img">
-                    </div>
-                    <div class="membername flex">
-                        <text class="cre">Harun</text>
-                    </div>
-                    <div class="memberstate flex">
-                        <div class="inner-memberstate">
-                            <text>Member</text>
+                    <div class="faris flex kl">
+                        <div class="memberlogo flex">
+                            <img src="./ha_img.png" class="memberlogo-img">
+                        </div>
+                        <div class="membername flex">
+                            <text class="cre">Harun</text>
+                        </div>
+                        <div class="memberstate flex">
+                            <div class="inner-memberstate">
+                                <text>Member</text>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="faris flex kl">
-                    <div class="memberlogo flex">
-                        <img src="./uk.png" class="memberlogo-img">
-                    </div>
-                    <div class="membername flex">
-                        <text class="cre">Rasya</text>
-                    </div>
-                    <div class="memberstate flex">
-                        <div class="inner-memberstate">
-                            <text>Member</text>
+                    <div class="faris flex kl">
+                        <div class="memberlogo flex">
+                            <img src="./uk.png" class="memberlogo-img">
+                        </div>
+                        <div class="membername flex">
+                            <text class="cre">Rasya</text>
+                        </div>
+                        <div class="memberstate flex">
+                            <div class="inner-memberstate">
+                                <text>Member</text>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="faris flex kl">
-                    <div class="memberlogo flex">
-                        <img src="./uk.png" class="memberlogo-img">
-                    </div>
-                    <div class="membername flex">
-                        <text class="cre">Nadim</text>
-                    </div>
-                    <div class="memberstate flex">
-                        <div class="inner-memberstate">
-                            <text>Member</text>
+                    <div class="faris flex kl">
+                        <div class="memberlogo flex">
+                            <img src="./uk.png" class="memberlogo-img">
+                        </div>
+                        <div class="membername flex">
+                            <text class="cre">Nadim</text>
+                        </div>
+                        <div class="memberstate flex">
+                            <div class="inner-memberstate">
+                                <text>Member</text>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
         </section>
+        <footer class="footer">
+            <nav style="display: flex;margin: 0 auto;display: flex;flex-wrap: nowrap;justify-content: space-between;" aria-label="Vercel Directory" role="navigation">
+                <div class="footer-group flex" style="align-items: center;width: 100%;">
+                    <div class="logo flex" style="align-items: center;">
+                        <img src="./logo.jfif" style="max-width: 32px;border-radius: 100%;">
+                        <text class="unselectable" style="margin: 0 8px 0 8px;font-size: 13px;">GOK</text>
+                    </div>
+                    <a class="svgtwt" href="https://twitter.com/gwfrosty_ngab">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                            <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+                        </svg>
+                    </a>
+                </div>
+            </nav>
+        </footer>
     </body>
+    <script>
+        const dsk = document.getElementById("cop");
+        const btn = document.getElementById("con");
+
+
+        btn.onclick = function() {
+            const chevron = document.getElementById("chevron");
+            const membersec = document.getElementById("mem");
+
+            membersec.classList.toggle("heightw");
+            dsk.classList.toggle("expanded");
+            chevron.classList.toggle("rotated");
+        }
+
+        function tgg() {
+            document.getElementById("vba").classList.toggle("showOmaga");
+            document.getElementById("header").classList.toggle("hideheader");
+        }
+        
+    </script>
 </html>
