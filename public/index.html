@@ -1,494 +1,425 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="./logo.jfif">
         <title>GOK - Home</title>
+        <meta name="description" content="Grup Orang Ketiga"/>
+        <meta property="og:title" content="GOK"/>
+        <meta property="og:url" content="https://gruporangketiga.vercel.app" />
+        <meta property="og:description" content="Grup Orang Ketiga" />
+        <meta property="og:type" content="website" />
+        <link rel="icon" href="./logo.jfif">
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
             * {
                 margin: 0;
+                -moz-user-select: none;
+                -webkit-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
                 padding: 0;
+                font-family: "Inter", sans-serif, "Segoe UI Variable Display";
                 scroll-behavior: smooth;
-                font-family: "Inter", sans-serif;
             }
 
-            *, ::after, ::before {
+            *, html, ::after, ::before {
                 box-sizing: border-box;
+                outline: none;
+            }
+
+            :root {
+                --complete-blackout: #000;
+                --slow-animation: 350ms;
+                --medium-animation: 250ms;
+                --fast-animation: 100ms;
+                --fastest-animation: 87ms;
+                --standard-corner-radius: 5px;
+                --padding: 24px;
+                --border: #676767;
+                --white: #fff;
+                --hover: #ffffff14;
             }
 
             body {
-                background: url("./img.jpg") no-repeat;
-                background-attachment: fixed;
-                background-size: cover;
-                overflow-x: hidden;
+                background: var(--complete-blackout);
+                color: var(--white);
+            }
+
+            .flex {
+                display: flex;
+            }
+
+            .header {
+                padding: var(--padding);
+                border-top: 1.2px var(--border) dotted;
+                align-items: center;
+                position: fixed;
+                bottom: 0;
+                width: 100vw;
+                background: var(--complete-blackout);
+            }
+
+            .buttons,
+            .togglesidebar,
+            .buttons-mb {
+                padding: 5px 12px 5px 12px;
+                margin-left: var(--standard-corner-radius);
+                border-bottom: transparent 1.5px solid;
+                align-items: center;
+                color: var(--border);
+                font-size: 14.5px;
+            }
+
+            .buttons:hover,
+            .togglesidebar:hover,
+            .buttons-mb:hover,
+            .active {
+                border-bottom: 1.5px var(--white) dotted;
+                transition: all var(--fastest-animation) ease;
+                color: var(--white);
+            }
+
+            a {
+                text-decoration: none;
+                cursor: default;
                 color: #fff;
             }
-            div.box.one {
-                background: #000;
-                border-radius: 4px;
-                padding: 8px;
-                width: 39vw;
-                height: 57vh;
-                align-items: center;
-                justify-content: center;
-            }
 
-            .topsec {
-                width: 100vw;
-                height: 100vh;
+            .logo {
+                max-width: 32px;
+                max-height: 32px;
                 align-items: center;
-                justify-content: center;
-            }
-            .flex {display: flex;}
-
-            .imgclass {
-                max-width: 100px;
-                max-height: 100px;
                 border-radius: 100%;
             }
 
-            .inner-boxone {
-                align-items: center;
+            .logo text {
+                margin: 0 0 0 7px;
+                font-size: 13.5px;
+                color: #d4d4d4;
             }
 
-            .gg {
-                margin: 0 0 0 10px;
+            .logo:hover > text {
+                color: #fff;
             }
 
-            @media screen and (max-width: 789px) {
-                .inner-boxone {
-                    flex-flow: column;
-                }
-                div.box.one {
-                    width: 68vw !important;
-                }
+            .buttonsplace {
+                flex: 1 1 auto;
+                justify-content: end;
             }
 
-            .tp {
-                background-color: #000;
-                block-size: 50px;
-                width: 100vw;
-                border-bottom: #101010 1.5px solid;
-                box-shadow: 0px 4px 8px hsla(0, 0%, 0%, .26);
-                position: fixed;
-                padding: 5px 8px 5px 8px;
-                box-sizing: border-box;
-                top: 0;
-                transition: all 550ms linear;
-                z-index: 9;
+            .first h1,
+            .second #pr {
+                font-weight: 600;
+                border-bottom: #fff 2.5px dotted;
             }
 
-            .innertp {
-                align-items: center;
-            }
-            .buttons,
-            .btnsty {
-                align-items: center;
-            }
-
-            .btnsty {
-                padding: 15px 9px;
-                border-bottom: 2px transparent solid;
-                transition: 87ms all ease;
-                overflow: hidden;
-            }
-            .btnsty svg {
-                margin: 0 5px 0 0;
-            }
-
-            .btnsty:hover {
-                border-bottom: #fff 2px solid;
-            }
-
-            .btnsty:active {
-                border-bottom: 2px #00a884 solid;
-                transition: all 83ms ease;
-            }
-
-            .unselectable {
-                -moz-user-select: none;
-                -ms-user-select: none;
-                -webkit-user-select: none;
-                user-select: none;
-            }
-
-            .members {
-                background: #212121;
-                border-top-left-radius: 12px;
-                border-top-right-radius: 12px;
+            .first {
+                padding: 12px;
                 height: 100vh;
-                box-shadow: 0px 4px 8px hsla(0, 0%, 0%, .26);
-                margin: auto;
-                transition: 320ms;
-                padding: 18px;
-                overflow: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
             }
 
-            @supports(overflow:overlay) {
-                * {
-                    overflow: overlay
-                }
+            .second {
+                padding: 12px;
+                height: auto;
+                border-top: var(--border) 0.44px dotted;
             }
 
-            ::-webkit-scrollbar {
-                border-radius: 14px;
-                display: block;
-                transition: all 167ms;
-                inline-size: 14px;
+            .first .second-layer {
+                margin: 0 0 7px;
             }
 
-            ::-webkit-scrollbar:hover {
-                transition: all 167ms;
-                background: var(--scrollbar-caret-bottom) bottom center/contain no-repeat, var(--scrollbar-caret-top) top center/contain no-repeat, hsl(var(--scrollbar-track-value), var(--mica-tint-opacity));
+            .readmore {
+                background: transparent;
+                border: 2px white dotted;
+                padding: 7px 18px;
+                color: #fff;
+                border-radius: var(--standard-corner-radius);
+                transition: all var(--fastest-animation) linear;
+                font-size: 13.5px;
             }
 
-            ::-webkit-scrollbar-thumb {
-                background: rgba(0, 0, 0, 0.518);
-                background-clip: padding-box;
-                border: 6px solid transparent;
-                border-block: none;
-                transition: all 167ms;
-                border-radius: 14px
+            .readmore:hover {
+                border: 2px #fff solid;
+                transition: all var(--fastest-animation) linear;
             }
 
-            ::-webkit-scrollbar-thumb:hover {
-                border: 4px solid transparent;
-                transition: all 167ms;
+            .readmore:active {
+                background: #fff;
+                color: var(--complete-blackout);
+                transition: all var(--fastest-animation) linear;
             }
 
-            ::-webkit-scrollbar-button:single-button {
-                block-size: 14px;
-                display: block
+            .footer-fl {
+                margin: 36px 0 0 0;
             }
 
-            .memberlogo-img {
+            .topcontext {
+                align-items: center;
+                justify-content: center;
+            }
+
+            .memberlist {
+                padding: 12px;
+            }
+
+            .whatsapp {
                 max-width: 55px;
                 max-height: 48px;
                 border-radius: 100%;
             }
 
-            .faris {
+            .box {
+                padding: 13px;
+                background: transparent;
+                border: #fff 0.44px dotted;
+                margin: 0 0 10px 0;
+                border-radius: 6px;
                 align-items: center;
-                padding: 7px 10px;
-                box-shadow: 0px 4px 8px hsla(0, 0%, 0%, .26);
-                background: #1a1a1a;
-                border-radius: 4px;
             }
 
-            .faris .cre {
+            .state {
+                flex-direction: column;
                 margin: 0 0 0 8px;
             }
 
-            .memberstate {
-                border: #00a884 1.3px solid;
-                color: #000;
-                border-radius: 7px;
-                margin-left: auto;
-                background: #00a884;
+            .name {
+                font-size: 15.5px;
             }
-            
-            .inner-memberstate {
-                border-radius: 7px;
-                background: #00a884;
-                font-size: 14px;
-                padding: 4px;
+            .third,
+            .social {
+                padding: 24px;
+                border-top: var(--border) 0.44px dotted;
             }
 
-            .context {
-                align-items: center;
-                padding: 7px 10px;
-                box-shadow: 0px 4px 8px hsla(0, 0%, 0%, .26);
-                background: #1a1a1a;
-                transition: 167ms ease;
-                border-radius: 4px;
+            #github,
+            #twitter {
+                color: #acacac;
+                transition: var(--fastest-animation);
             }
 
-            .context:hover {
-                background: rgba(255, 255, 255, 0.073);
-                transition: 167ms ease;
+            #twitter {
+                margin-left: 1.3pc;
+            }
+            #github:hover,
+            #twitter:hover {
+                color: #fff;
+                transition: var(--fastest-animation);
             }
 
-            .context #chevron {
-                margin: 0 0 0 5px;
-                transition: all 320ms linear;
-                transform: rotate(180deg);
-                margin-left: auto;
+            .togglesidebar {
+                display: none !important;
             }
 
-            .context #member {
-                margin: 0 5px 0 0;
-            }
-            .separator {
-                background: rgb(165, 165, 165);
-                height: 0.5px;
-                margin: 20px 0;
-            }
-            .kl {
-                margin: 7px 0 !important;
+            @media screen and (max-width: 789px) {
+                .buttons {
+                    display: none !important;
+                }
+
+                .togglesidebar {
+                    display: flex !important;
+                }
+
+                .mobile-only {
+                    display: block !important;
+                }
             }
 
-            .expanded {
-                height: 0;
-                transition: 87ms;
+            .mobile-only {
+                position: fixed;
+                background: var(--complete-blackout);
+                top: 0;
+                padding: var(--padding);
+                left: -1000px;
                 opacity: 0;
-                overflow: hidden;
+                border: 1.2px var(--border) dotted;
+                height: 100vh;
+                display: none;
+                z-index: -1;
+                transition: var(--medium-animation) left linear, var(--medium-animation) opacity linear;
+                width: 63vw;
             }
 
-            .rotated {
-                transform: rotate(0deg) !important;
-                transition: all 320ms linear;
-            }
-
-            .footer {
-                font-size: .875rem;
-                background: #000;
-                border-top: 1px solid #333;
-                padding: calc(1.5 * 24px);
-            }
-
-            .heightw {
-                height: auto;
-                transition: all 320ms;
-            }
-            .collapsable {
-                transition: 83ms;
+            .mobile-only.showed {
+                transition: var(--medium-animation) left linear, var(--medium-animation) opacity linear;
+                left: 0;
                 opacity: 1;
             }
 
-            .oomagaa {
-                bottom: -1000px;
-                transition: 335ms all linear;
-            }
-
-            .showOmaga {
-                bottom: -23px;
-                transition: 335ms all linear;
-            }
-
-            .hideheader {
-                top: -1000px !important;
-                transition: all 550ms linear;
-            }
-            .svgtwt {
-                display: flex;
-                justify-content: end;
-                color: #ababab;
-                margin: 0 0 0 auto;
-                transition: 167ms;
-            }
-
-            .svgtwt:hover {
-                color: #fff;
-                transition: 167ms;
-            }
-            
-            .footer-ab {
-                margin: 0 0 0 auto;
+            .buttons-mb {
+                margin: 12px 0;
+                width: fit-content;
             }
         </style>
     </head>
-    <body>
-        <header class="tp flex" id="header">
-            <div class="innertp flex">
-                <div class="buttons flex">
-                    <a class="btnsty flex" onclick="tgg();" style="text-decoration: none;color: currentColor;">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8.49579 8C9.32421 8 9.99579 8.67157 9.99579 9.5L9.995 10.2484C10.0979 12.0849 8.68334 13.0008 6.06019 13.0008C3.44552 13.0008 2 12.0969 2 10.2746V9.5C2 8.67157 2.67157 8 3.5 8H8.49579ZM12.4964 8C13.3248 8 13.9964 8.67157 13.9964 9.5L13.9956 10.0266C14.0861 11.674 12.8362 12.5 10.5516 12.5C10.2415 12.5 9.94993 12.4849 9.67766 12.4547C9.96832 12.1873 10.1848 11.8681 10.3228 11.4974L10.5516 11.5C12.3358 11.5 13.0491 11.0286 12.9964 10.054V9.5C12.9964 9.22386 12.7725 9 12.4964 9L10.4328 8.99998C10.3315 8.60667 10.1137 8.26018 9.81823 7.99959L12.4964 8ZM8.49579 9H3.5C3.22386 9 3 9.22386 3 9.5V10.2746C3 11.4206 3.92794 12.0008 6.06019 12.0008C8.18397 12.0008 9.05983 11.4337 8.99579 10.2763V9.5C8.99579 9.22386 8.77193 9 8.49579 9ZM6 2C7.38094 2 8.50041 3.11947 8.50041 4.5004C8.50041 5.88134 7.38094 7.00081 6 7.00081C4.61906 7.00081 3.49959 5.88134 3.49959 4.5004C3.49959 3.11947 4.61906 2 6 2ZM11 3C12.1046 3 13 3.89543 13 5C13 6.10457 12.1046 7 11 7C9.89543 7 9 6.10457 9 5C9 3.89543 9.89543 3 11 3ZM6 3C5.17135 3 4.4996 3.67175 4.4996 4.5004C4.4996 5.32906 5.17135 6.00081 6 6.00081C6.82865 6.00081 7.5004 5.32906 7.5004 4.5004C7.5004 3.67175 6.82865 3 6 3ZM11 4C10.4477 4 10 4.44772 10 5C10 5.55228 10.4477 6 11 6C11.5523 6 12 5.55228 12 5C12 4.44772 11.5523 4 11 4Z" fill="currentColor"/>
-                        </svg>
-                        <text class="unselectable" style="font-size: 14px;">Members</text>
-                    </a>
+    <body id="root">
+        <header class="flex header" id="header">
+            <a class="logo flex" href="#" title="Back to top">
+                <img src="./logo.jfif" class="logo">
+                <text id="back">GOK</text>
+            </a>
+            <div class="buttonsplace flex">
+                <a href="#home" class="buttons flex">
+                    <text>Home</text>
+                </a>
+                <a href="#members" class="buttons flex">
+                    <text>Members</text>
+                </a>
+                <a href="#about" class="buttons flex">
+                    <text>
+                        About
+                    </text>
+                </a>
+                <div class="togglesidebar" id="ok">
+                    <text>
+                        Open Navigation
+                    </text>
                 </div>
-
+            </div>
+            <div class="mobile-only" id="mbonly">
+                <a href="#home" class="buttons-mb flex">
+                    <text>Home</text>
+                </a>
+                <a href="#members" class="buttons-mb flex">
+                    <text>Members</text>
+                </a>
+                <a href="#about" class="buttons-mb flex">
+                    <text>
+                        About
+                    </text>
+                </a>
             </div>
         </header>
-        <section class="topsec flex unselectable">
-            <div class="box one flex">
-                <div class="inner-boxone flex">
-                    <img src="./logo.jfif" class="imgclass">
-                    <text class="gg">Grup Orang Ketiga</text>
+        <div class="header-wrapper"></div>
+        <section class="first" id="home">
+            <div class="second-layer">
+                <p>Apa itu</p>
+            </div>
+            <div class="first-layer">
+                <h1>
+                    Grup Orang Ketiga ?
+                </h1>
+            </div>
+            <footer class="footer-fl">
+                <a class="readmore" href="#about" id="readmore">
+                    <text>Read more</text>
+                </a>
+            </footer>
+        </section>
+        <section class="second" id="members">
+            <div class="topcontext flex">
+                <h1 id="pr">Members</h1>
+            </div>
+            <div class="memberlist">
+                <div class="box flex">
+                    <img src="./na_img.png" class="whatsapp">
+                    <div class="flex state">
+                        <h1 class="name">Nabil</h1>
+                        <text>Member</text>
+                    </div>
+                </div>
+                <div class="box flex">
+                    <img src="./uk.png" class="whatsapp">
+                    <div class="flex state">
+                        <h1 class="name">Fatih</h1>
+                        <text>Member</text>
+                    </div>
+                </div>
+                <div class="box flex">
+                    <img src="./uk.png" class="whatsapp">
+                    <div class="flex state">
+                        <h1 class="name">Faiz</h1>
+                        <text>Member</text>
+                    </div>
+                </div>
+                <div class="box flex">
+                    <img src="./fa_img.png" class="whatsapp">
+                    <div class="flex state">
+                        <h1 class="name">Fadel</h1>
+                        <text>Member & Admin</text>
+                    </div>
+                </div>
+                <div class="box flex">
+                    <img src="./ha_img.png" class="whatsapp">
+                    <div class="flex state">
+                        <h1 class="name">Harun</h1>
+                        <text>Member</text>
+                    </div>
+                </div>
+                <div class="box flex">
+                    <img src="./uk.png" class="whatsapp">
+                    <div class="flex state">
+                        <h1 class="name">Rasya</h1>
+                        <text>Member</text>
+                    </div>
+                </div>
+                <div class="box flex">
+                    <img src="./uk.png" class="whatsapp">
+                    <div class="flex state">
+                        <h1 class="name">Nadim</h1>
+                        <text>Member</text>
+                    </div>
                 </div>
             </div>
         </section>
-        <section class="oomagaa" style="padding: 20px;position: fixed;width: 100%;" id="vba">
-            <section class="members" id="mem">
-                <div class="context flex" onclick="tgg();" style="align-items: center;margin: 0 0 8px 0;">
-                    <div class="logobox flex" style="margin:0 7px 0 0;width: 50px;height: 50px;align-items:center;justify-content: center;border-radius: 100%;background: rgba(0, 0, 0, 0.737);">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M2.58859 2.71569L2.64645 2.64645C2.82001 2.47288 3.08944 2.4536 3.28431 2.58859L3.35355 2.64645L8 7.293L12.6464 2.64645C12.8417 2.45118 13.1583 2.45118 13.3536 2.64645C13.5488 2.84171 13.5488 3.15829 13.3536 3.35355L8.707 8L13.3536 12.6464C13.5271 12.82 13.5464 13.0894 13.4114 13.2843L13.3536 13.3536C13.18 13.5271 12.9106 13.5464 12.7157 13.4114L12.6464 13.3536L8 8.707L3.35355 13.3536C3.15829 13.5488 2.84171 13.5488 2.64645 13.3536C2.45118 13.1583 2.45118 12.8417 2.64645 12.6464L7.293 8L2.64645 3.35355C2.47288 3.17999 2.4536 2.91056 2.58859 2.71569L2.64645 2.64645L2.58859 2.71569Z" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <text>Close</text>
-                </div>
-                <div class="context flex" style="align-items: center;margin: 0 0 8px 0;">
-                    <div class="logobox flex" style="margin:0 7px 0 0;width: 50px;height: 50px;align-items:center;justify-content: center;border-radius: 100%;background: rgba(0, 0, 0, 0.737);">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.64728 2.14638C7.84268 1.95105 8.15946 1.95123 8.35464 2.14678C9.5947 3.38913 10.9689 4 12.5 4C12.7761 4 13 4.22386 13 4.5V7.50126C13 10.7196 11.3587 12.9075 8.15811 13.9743C8.05548 14.0086 7.94452 14.0086 7.84189 13.9743C4.64126 12.9075 3 10.7196 3 7.50126V4.5C3 4.22386 3.22386 4 3.5 4C5.02923 4 6.40416 3.38902 7.64728 2.14638ZM8.00042 3.18917C6.81393 4.25491 5.47941 4.86879 4 4.98118V7.50126C4 8.9349 4.36269 10.0655 5.02127 10.9453C5.65858 11.7967 6.62953 12.4885 8 12.9715C9.37047 12.4885 10.3414 11.7967 10.9787 10.9453C11.6373 10.0655 12 8.9349 12 7.50126V4.98121C10.5195 4.86895 9.18521 4.25528 8.00042 3.18917Z" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <text>Creator - 1</text>
-                </div>
-                <div class="faris flex">
-                    <div class="memberlogo flex">
-                        <img src="./far_img.png" class="memberlogo-img">
-                    </div>
-                    <div class="membername flex">
-                        <text class="cre">Faris</text>
-                    </div>
-                    <div class="memberstate flex">
-                        <div class="inner-memberstate">
-                            <text>Admin</text>
-                        </div>
-                    </div>
-                </div>
-                <div class="separator"></div>
-                <div class="context flex" style="align-items: center;" id="con">
-                    <div class="logobox flex" style="margin:0 7px 0 0;width: 50px;height: 50px;align-items:center;justify-content: center;border-radius: 100%;background: rgba(0, 0, 0, 0.737);">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8.49579 8C9.32421 8 9.99579 8.67157 9.99579 9.5L9.995 10.2484C10.0979 12.0849 8.68334 13.0008 6.06019 13.0008C3.44552 13.0008 2 12.0969 2 10.2746V9.5C2 8.67157 2.67157 8 3.5 8H8.49579ZM12.4964 8C13.3248 8 13.9964 8.67157 13.9964 9.5L13.9956 10.0266C14.0861 11.674 12.8362 12.5 10.5516 12.5C10.2415 12.5 9.94993 12.4849 9.67766 12.4547C9.96832 12.1873 10.1848 11.8681 10.3228 11.4974L10.5516 11.5C12.3358 11.5 13.0491 11.0286 12.9964 10.054V9.5C12.9964 9.22386 12.7725 9 12.4964 9L10.4328 8.99998C10.3315 8.60667 10.1137 8.26018 9.81823 7.99959L12.4964 8ZM8.49579 9H3.5C3.22386 9 3 9.22386 3 9.5V10.2746C3 11.4206 3.92794 12.0008 6.06019 12.0008C8.18397 12.0008 9.05983 11.4337 8.99579 10.2763V9.5C8.99579 9.22386 8.77193 9 8.49579 9ZM6 2C7.38094 2 8.50041 3.11947 8.50041 4.5004C8.50041 5.88134 7.38094 7.00081 6 7.00081C4.61906 7.00081 3.49959 5.88134 3.49959 4.5004C3.49959 3.11947 4.61906 2 6 2ZM11 3C12.1046 3 13 3.89543 13 5C13 6.10457 12.1046 7 11 7C9.89543 7 9 6.10457 9 5C9 3.89543 9.89543 3 11 3ZM6 3C5.17135 3 4.4996 3.67175 4.4996 4.5004C4.4996 5.32906 5.17135 6.00081 6 6.00081C6.82865 6.00081 7.5004 5.32906 7.5004 4.5004C7.5004 3.67175 6.82865 3 6 3ZM11 4C10.4477 4 10 4.44772 10 5C10 5.55228 10.4477 6 11 6C11.5523 6 12 5.55228 12 5C12 4.44772 11.5523 4 11 4Z" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <text>Members - 7</text>
-                    <svg id="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3.20041 5.73966C3.48226 5.43613 3.95681 5.41856 4.26034 5.70041L8 9.22652L11.7397 5.70041C12.0432 5.41856 12.5177 5.43613 12.7996 5.73966C13.0815 6.0432 13.0639 6.51775 12.7603 6.7996L8.51034 10.7996C8.22258 11.0668 7.77743 11.0668 7.48967 10.7996L3.23966 6.7996C2.93613 6.51775 2.91856 6.0432 3.20041 5.73966Z" fill="currentColor"/>
-                    </svg>
-                </div>
-                <div class="collapsable" id="cop">
-                    <div class="faris flex kl">
-                        <div class="memberlogo flex">
-                            <img src="./na_img.png" class="memberlogo-img">
-                        </div>
-                        <div class="membername flex">
-                            <text class="cre">Nabil</text>
-                        </div>
-                        <div class="memberstate flex">
-                            <div class="inner-memberstate">
-                                <text>Member</text>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faris flex kl">
-                        <div class="memberlogo flex">
-                            <img src="./uk.png" class="memberlogo-img">
-                        </div>
-                        <div class="membername flex">
-                            <text class="cre">Fatih</text>
-                        </div>
-                        <div class="memberstate flex">
-                            <div class="inner-memberstate">
-                                <text>Member</text>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faris flex kl">
-                        <div class="memberlogo flex">
-                            <img src="./uk.png" class="memberlogo-img">
-                        </div>
-                        <div class="membername flex">
-                            <text class="cre">Faiz</text>
-                        </div>
-                        <div class="memberstate flex">
-                            <div class="inner-memberstate">
-                                <text>Member</text>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faris flex kl">
-                        <div class="memberlogo flex">
-                            <img src="./fa_img.png" class="memberlogo-img">
-                        </div>
-                        <div class="membername flex">
-                            <text class="cre">Fadel</text>
-                        </div>
-                        <div class="memberstate flex">
-                            <div class="inner-memberstate">
-                                <text>Member</text>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faris flex kl">
-                        <div class="memberlogo flex">
-                            <img src="./ha_img.png" class="memberlogo-img">
-                        </div>
-                        <div class="membername flex">
-                            <text class="cre">Harun</text>
-                        </div>
-                        <div class="memberstate flex">
-                            <div class="inner-memberstate">
-                                <text>Member</text>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faris flex kl">
-                        <div class="memberlogo flex">
-                            <img src="./uk.png" class="memberlogo-img">
-                        </div>
-                        <div class="membername flex">
-                            <text class="cre">Rasya</text>
-                        </div>
-                        <div class="memberstate flex">
-                            <div class="inner-memberstate">
-                                <text>Member</text>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faris flex kl">
-                        <div class="memberlogo flex">
-                            <img src="./uk.png" class="memberlogo-img">
-                        </div>
-                        <div class="membername flex">
-                            <text class="cre">Nadim</text>
-                        </div>
-                        <div class="memberstate flex">
-                            <div class="inner-memberstate">
-                                <text>Member</text>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <section class="third" id="about">
+            <div class="topcontext flex" style="width:fit-content;margin-bottom:7px;justify-content: start;border-bottom: 2.5px #fff dotted;">
+                <h1>About</h1>
+            </div>
+            <div class="innerthird">
+                <p>
+                    <b>Grup Orang Ketiga</b> adalah grup gabut yang didirikan oleh <b>Faris</b>
+                    dan ini membentuk kelompok tanpa seleksi.
+                </p>
+            </div>
         </section>
-        <footer class="footer">
-            <nav style="display: flex;margin: 0 auto;display: flex;flex-wrap: nowrap;justify-content: space-between;" aria-label="Vercel Directory" role="navigation">
-                <div class="footer-group flex" style="align-items: center;width: 100%;">
-                    <div class="logo flex" style="align-items: center;">
-                        <img src="./logo.jfif" style="max-width: 32px;border-radius: 100%;">
-                        <text class="unselectable" style="margin: 0 8px 0 8px;font-size: 13px;">GOK</text>
-                    </div>
-                    <div class="footer-ab flex">
-                        <a class="svgtwt" href="https://twitter.com/gwfrosty_ngab" style="margin: 0 1pc 0 0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
-                                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
-                            </svg>
-                        </a>
-                        <a class="svgtwt" href="https://github.com/frostmint/gruporangketiga">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </nav>
-        </footer>
+        <div class="social">
+            <div class="svghere">
+                <a href="https://github.com/frostmint/gruporangketiga">
+                    <svg id="github" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                </a>
+                <a href="https://twitter.com/gwfrosty_ngab">
+                    <svg  id="twitter" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="wr" style="padding: 40px;"></div>
     </body>
     <script>
-        const dsk = document.getElementById("cop");
-        const btn = document.getElementById("con");
+        const links = document.querySelectorAll('.buttons');
+        const sections = document.querySelectorAll('section');
 
+        function changeLinkState() {
+            let index = sections.length;
 
-        btn.onclick = function() {
-            const chevron = document.getElementById("chevron");
-            const membersec = document.getElementById("mem");
-
-            membersec.classList.toggle("heightw");
-            dsk.classList.toggle("expanded");
-            chevron.classList.toggle("rotated");
+            while(--index && window.scrollY + 50 < sections[index].offsetTop) {}
+            
+            links.forEach((link) => link.classList.remove('active'));
+            links[index].classList.add('active');
         }
 
-        function tgg() {
-            document.getElementById("vba").classList.toggle("showOmaga");
-            document.getElementById("header").classList.toggle("hideheader");
+        changeLinkState();
+        window.addEventListener('scroll', changeLinkState);
+
+        document.getElementById("ok").onclick = function() {openSidebar()};
+
+
+        function openSidebar() {
+            const sidebar = document.getElementById("mbonly");
+            sidebar.classList.toggle("showed");
         }
-        
+
+        const sidebar = document.getElementById("mbonly");
+        sidebar.onclick = function() {
+            const sidebar = document.getElementById("mbonly");
+            sidebar.classList.remove("showed");
+        }
+
     </script>
 </html>
