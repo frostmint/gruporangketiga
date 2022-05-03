@@ -22,7 +22,7 @@
                 scroll-behavior: smooth;
             }
 
-            *, html, ::after, ::before {
+            *, *::after, *::before, html {
                 box-sizing: border-box;
                 outline: none;
             }
@@ -89,6 +89,7 @@
                 max-width: 32px;
                 max-height: 32px;
                 align-items: center;
+                z-index: 3;
                 border-radius: 100%;
             }
 
@@ -172,7 +173,12 @@
                 border-radius: 100%;
             }
 
-            .box {
+            .faq-box {
+                align-items: initial !important;
+            }
+
+            .box,
+            .faq-box {
                 padding: 13px;
                 background: transparent;
                 border: #fff 0.44px dotted;
@@ -190,24 +196,13 @@
                 font-size: 15.5px;
             }
             .third,
-            .social {
+            .fourth {
                 padding: 24px;
                 border-top: var(--border) 0.44px dotted;
             }
 
-            #github,
-            #twitter {
-                color: #acacac;
-                transition: var(--fastest-animation);
-            }
-
-            #twitter {
-                margin-left: 1.3pc;
-            }
-            #github:hover,
-            #twitter:hover {
-                color: #fff;
-                transition: var(--fastest-animation);
+            .social {
+                padding: 24px;
             }
 
             .togglesidebar {
@@ -238,9 +233,9 @@
                 border: 1.2px var(--border) dotted;
                 height: 100vh;
                 display: none;
-                z-index: -1;
+                z-index: 2;
                 transition: var(--medium-animation) left linear, var(--medium-animation) opacity linear;
-                width: 63vw;
+                width: 100vw;
             }
 
             .mobile-only.showed {
@@ -253,6 +248,114 @@
                 margin: 12px 0;
                 width: fit-content;
             }
+
+            .outer-collapsible-icon {
+                width: 32px;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                margin: 0 0 0 auto;
+                justify-content: center;
+                background-clip: padding-box;
+                border: transparent 1.3px solid;
+                border-radius: var(--standard-corner-radius);
+            }
+
+            .mdf:hover > .outer-collapsible-icon {
+                background: hsla(0, 0%, 100%, .084);
+            }
+
+            .mdf:active > .outer-collapsible-icon {
+                background: hsla(0, 0%, 100%, .033);
+                border: hsla(0, 0%, 100%, 6.98%) 1.3px solid;
+                color: hsla(0, 0%, 100%, 78.6%);
+            }
+
+            .third-layer {
+                align-items: center;
+                display: flex;
+                font-size: 12px;
+                color: gray;
+                margin: 0 0 5px 0;
+            }
+
+            .faq-start {
+                padding: 12px;
+            }
+
+            .question {
+                margin-top: 10px;
+                display: none;
+            }
+
+            .faq-box:focus > .inner-faqbox > .question {
+                display: block !important;
+            }
+
+            .faq-box:focus > .outer-key > .key {
+                border: #fff 1.3px solid;
+                color: #fff;
+            }
+
+            .key {
+                width: max-content;
+                padding: 5px;
+                border: #676767 1.3px solid;
+                border-radius: 4px;
+                font-size: 12px;
+                color: #676767;
+                display: flex;
+                align-items: center;
+                height: fit-content;
+            }
+
+            .outer-key {
+                align-items: center;
+                display: flex;
+                margin: 0 0 0 auto;
+            }
+
+            .collapsed {
+                display: none !important;
+            }
+
+            #ci {
+                transform: none;
+                transition: 120ms all linear;
+            }
+
+            .rotated {
+                transform: rotate(180deg) !important;
+                transition: all 120ms linear;
+            }
+
+            .github,
+            .twitter {
+                height: 32px;
+                width: 32px;
+                align-items: center;
+                display: flex;
+                border: transparent 1.3px solid;
+                justify-content: center;
+                background-clip: padding-box;
+                border-radius: var(--standard-corner-radius);
+            }
+
+            .twitter {
+                margin: 0 0 0 5px;
+            }
+
+            .github:hover,
+            .twitter:hover {
+                background: hsla(0, 0%, 100%, .084);
+            }
+
+            .github:active,
+            .twitter:active {
+                background: hsla(0, 0%, 100%, .033);
+                border: hsla(0, 0%, 100%, 6.98%) 1.3px solid;
+                color: hsla(0, 0%, 100%, 78.6%);
+            }
         </style>
     </head>
     <body id="root">
@@ -263,12 +366,21 @@
             </a>
             <div class="buttonsplace flex">
                 <a href="#home" class="buttons flex">
+                    <svg width="15" style="margin: 0 4px 0 0;" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.07926 0.222253C7.31275 -0.007434 7.6873 -0.007434 7.92079 0.222253L14.6708 6.86227C14.907 7.09465 14.9101 7.47453 14.6778 7.71076C14.4454 7.947 14.0655 7.95012 13.8293 7.71773L13 6.90201V12.5C13 12.7761 12.7762 13 12.5 13H2.50002C2.22388 13 2.00002 12.7761 2.00002 12.5V6.90201L1.17079 7.71773C0.934558 7.95012 0.554672 7.947 0.32229 7.71076C0.0899079 7.47453 0.0930283 7.09465 0.32926 6.86227L7.07926 0.222253ZM7.50002 1.49163L12 5.91831V12H10V8.49999C10 8.22385 9.77617 7.99999 9.50002 7.99999H6.50002C6.22388 7.99999 6.00002 8.22385 6.00002 8.49999V12H3.00002V5.91831L7.50002 1.49163ZM7.00002 12H9.00002V8.99999H7.00002V12Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                     <text>Home</text>
                 </a>
                 <a href="#members" class="buttons flex">
+                    <svg width="15" style="margin: 0 4px 0 0;" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 0.875C5.49797 0.875 3.875 2.49797 3.875 4.5C3.875 6.15288 4.98124 7.54738 6.49373 7.98351C5.2997 8.12901 4.27557 8.55134 3.50407 9.31167C2.52216 10.2794 2.02502 11.72 2.02502 13.5999C2.02502 13.8623 2.23769 14.0749 2.50002 14.0749C2.76236 14.0749 2.97502 13.8623 2.97502 13.5999C2.97502 11.8799 3.42786 10.7206 4.17091 9.9883C4.91536 9.25463 6.02674 8.87499 7.49995 8.87499C8.97317 8.87499 10.0846 9.25463 10.8291 9.98831C11.5721 10.7206 12.025 11.8799 12.025 13.5999C12.025 13.8623 12.2376 14.0749 12.5 14.0749C12.7623 14.075 12.975 13.8623 12.975 13.6C12.975 11.72 12.4778 10.2794 11.4959 9.31166C10.7244 8.55135 9.70025 8.12903 8.50625 7.98352C10.0187 7.5474 11.125 6.15289 11.125 4.5C11.125 2.49797 9.50203 0.875 7.5 0.875ZM4.825 4.5C4.825 3.02264 6.02264 1.825 7.5 1.825C8.97736 1.825 10.175 3.02264 10.175 4.5C10.175 5.97736 8.97736 7.175 7.5 7.175C6.02264 7.175 4.825 5.97736 4.825 4.5Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                     <text>Members</text>
                 </a>
+                <a href="#faq" class="buttons flex">
+                    <svg width="15" style="margin: 0 4px 0 0;" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.877075 7.49972C0.877075 3.84204 3.84222 0.876892 7.49991 0.876892C11.1576 0.876892 14.1227 3.84204 14.1227 7.49972C14.1227 11.1574 11.1576 14.1226 7.49991 14.1226C3.84222 14.1226 0.877075 11.1574 0.877075 7.49972ZM7.49991 1.82689C4.36689 1.82689 1.82708 4.36671 1.82708 7.49972C1.82708 10.6327 4.36689 13.1726 7.49991 13.1726C10.6329 13.1726 13.1727 10.6327 13.1727 7.49972C13.1727 4.36671 10.6329 1.82689 7.49991 1.82689ZM8.24993 10.5C8.24993 10.9142 7.91414 11.25 7.49993 11.25C7.08571 11.25 6.74993 10.9142 6.74993 10.5C6.74993 10.0858 7.08571 9.75 7.49993 9.75C7.91414 9.75 8.24993 10.0858 8.24993 10.5ZM6.05003 6.25C6.05003 5.57211 6.63511 4.925 7.50003 4.925C8.36496 4.925 8.95003 5.57211 8.95003 6.25C8.95003 6.74118 8.68002 6.99212 8.21447 7.27494C8.16251 7.30651 8.10258 7.34131 8.03847 7.37854L8.03841 7.37858C7.85521 7.48497 7.63788 7.61119 7.47449 7.73849C7.23214 7.92732 6.95003 8.23198 6.95003 8.7C6.95004 9.00376 7.19628 9.25 7.50004 9.25C7.8024 9.25 8.04778 9.00601 8.05002 8.70417L8.05056 8.7033C8.05924 8.6896 8.08493 8.65735 8.15058 8.6062C8.25207 8.52712 8.36508 8.46163 8.51567 8.37436L8.51571 8.37433C8.59422 8.32883 8.68296 8.27741 8.78559 8.21506C9.32004 7.89038 10.05 7.35382 10.05 6.25C10.05 4.92789 8.93511 3.825 7.50003 3.825C6.06496 3.825 4.95003 4.92789 4.95003 6.25C4.95003 6.55376 5.19628 6.8 5.50003 6.8C5.80379 6.8 6.05003 6.55376 6.05003 6.25Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    <text>
+                        FAQ
+                    </text>
+                </a>
                 <a href="#about" class="buttons flex">
+                    <svg width="15" style="margin: 0 4px 0 0;" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.49991 0.876892C3.84222 0.876892 0.877075 3.84204 0.877075 7.49972C0.877075 11.1574 3.84222 14.1226 7.49991 14.1226C11.1576 14.1226 14.1227 11.1574 14.1227 7.49972C14.1227 3.84204 11.1576 0.876892 7.49991 0.876892ZM1.82707 7.49972C1.82707 4.36671 4.36689 1.82689 7.49991 1.82689C10.6329 1.82689 13.1727 4.36671 13.1727 7.49972C13.1727 10.6327 10.6329 13.1726 7.49991 13.1726C4.36689 13.1726 1.82707 10.6327 1.82707 7.49972ZM8.24992 4.49999C8.24992 4.9142 7.91413 5.24999 7.49992 5.24999C7.08571 5.24999 6.74992 4.9142 6.74992 4.49999C6.74992 4.08577 7.08571 3.74999 7.49992 3.74999C7.91413 3.74999 8.24992 4.08577 8.24992 4.49999ZM6.00003 5.99999H6.50003H7.50003C7.77618 5.99999 8.00003 6.22384 8.00003 6.49999V9.99999H8.50003H9.00003V11H8.50003H7.50003H6.50003H6.00003V9.99999H6.50003H7.00003V6.99999H6.50003H6.00003V5.99999Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                     <text>
                         About
                     </text>
@@ -277,14 +389,22 @@
                     <text>
                         Open Navigation
                     </text>
+                    <svg style="margin-left: 5px;" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                 </div>
             </div>
             <div class="mobile-only" id="mbonly">
+                <span class="flex" style="align-items: center;">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 12.85L1 12.85L1 14.15L14 14.15L14 12.85ZM14 8.85002L1 8.85002L1 10.15L14 10.15L14 8.85002ZM1 4.85003L14 4.85003L14 6.15003L1 6.15002L1 4.85003ZM14 0.850025L1 0.850025L1 2.15002L14 2.15002L14 0.850025Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    <text style="margin: 0 0 0 14px;">Navigation</text>
+                </span>
                 <a href="#home" class="buttons-mb flex">
                     <text>Home</text>
                 </a>
                 <a href="#members" class="buttons-mb flex">
                     <text>Members</text>
+                </a>
+                <a href="#faq" class="buttons-mb flex">
+                    <text>FAQ</text>
                 </a>
                 <a href="#about" class="buttons-mb flex">
                     <text>
@@ -295,6 +415,10 @@
         </header>
         <div class="header-wrapper"></div>
         <section class="first" id="home">
+            <div class="third-layer">
+                <svg width="15" style="margin: 0 4px 0 0;" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.877075 7.49972C0.877075 3.84204 3.84222 0.876892 7.49991 0.876892C11.1576 0.876892 14.1227 3.84204 14.1227 7.49972C14.1227 11.1574 11.1576 14.1226 7.49991 14.1226C3.84222 14.1226 0.877075 11.1574 0.877075 7.49972ZM7.49991 1.82689C4.36689 1.82689 1.82708 4.36671 1.82708 7.49972C1.82708 10.6327 4.36689 13.1726 7.49991 13.1726C10.6329 13.1726 13.1727 10.6327 13.1727 7.49972C13.1727 4.36671 10.6329 1.82689 7.49991 1.82689ZM8.24993 10.5C8.24993 10.9142 7.91414 11.25 7.49993 11.25C7.08571 11.25 6.74993 10.9142 6.74993 10.5C6.74993 10.0858 7.08571 9.75 7.49993 9.75C7.91414 9.75 8.24993 10.0858 8.24993 10.5ZM6.05003 6.25C6.05003 5.57211 6.63511 4.925 7.50003 4.925C8.36496 4.925 8.95003 5.57211 8.95003 6.25C8.95003 6.74118 8.68002 6.99212 8.21447 7.27494C8.16251 7.30651 8.10258 7.34131 8.03847 7.37854L8.03841 7.37858C7.85521 7.48497 7.63788 7.61119 7.47449 7.73849C7.23214 7.92732 6.95003 8.23198 6.95003 8.7C6.95004 9.00376 7.19628 9.25 7.50004 9.25C7.8024 9.25 8.04778 9.00601 8.05002 8.70417L8.05056 8.7033C8.05924 8.6896 8.08493 8.65735 8.15058 8.6062C8.25207 8.52712 8.36508 8.46163 8.51567 8.37436L8.51571 8.37433C8.59422 8.32883 8.68296 8.27741 8.78559 8.21506C9.32004 7.89038 10.05 7.35382 10.05 6.25C10.05 4.92789 8.93511 3.825 7.50003 3.825C6.06496 3.825 4.95003 4.92789 4.95003 6.25C4.95003 6.55376 5.19628 6.8 5.50003 6.8C5.80379 6.8 6.05003 6.55376 6.05003 6.25Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                <text>FAQ</text>
+            </div>
             <div class="second-layer">
                 <p>Apa itu</p>
             </div>
@@ -365,29 +489,99 @@
                 </div>
             </div>
         </section>
-        <section class="third" id="about">
+        <section class="third collapsible" id="faq">
+            <div class="topcontext flex mdf" onclick="collapse()">
+                <h1 style="border-bottom: 2.5px #fff dotted;">Frequently Asked Question</h1>
+                <div class="outer-collapsible-icon">
+                    <svg class="collapsible-icon" id="ci" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.13523 8.84197C3.3241 9.04343 3.64052 9.05363 3.84197 8.86477L7.5 5.43536L11.158 8.86477C11.3595 9.05363 11.6759 9.04343 11.8648 8.84197C12.0536 8.64051 12.0434 8.32409 11.842 8.13523L7.84197 4.38523C7.64964 4.20492 7.35036 4.20492 7.15803 4.38523L3.15803 8.13523C2.95657 8.32409 2.94637 8.64051 3.13523 8.84197Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </div>
+            </div>
+            <div class="faq-start" id="fqstr">
+                <div class="faq-box flex" tabindex="1" style="display: none;">
+                    <div class="inner-faqbox">
+                            <span style="color: red;display: flex;
+                            align-items: center;
+                            font-size: 14px;
+                            width: fit-content;">
+                            <svg width="15" style="margin: 0 5px 0 0;" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.4449 0.608765C8.0183 -0.107015 6.9817 -0.107015 6.55509 0.608766L0.161178 11.3368C-0.275824 12.07 0.252503 13 1.10608 13H13.8939C14.7475 13 15.2758 12.07 14.8388 11.3368L8.4449 0.608765ZM7.4141 1.12073C7.45288 1.05566 7.54712 1.05566 7.5859 1.12073L13.9798 11.8488C14.0196 11.9154 13.9715 12 13.8939 12H1.10608C1.02849 12 0.980454 11.9154 1.02018 11.8488L7.4141 1.12073ZM6.8269 4.48611C6.81221 4.10423 7.11783 3.78663 7.5 3.78663C7.88217 3.78663 8.18778 4.10423 8.1731 4.48612L8.01921 8.48701C8.00848 8.766 7.7792 8.98664 7.5 8.98664C7.2208 8.98664 6.99151 8.766 6.98078 8.48701L6.8269 4.48611ZM8.24989 10.476C8.24989 10.8902 7.9141 11.226 7.49989 11.226C7.08567 11.226 6.74989 10.8902 6.74989 10.476C6.74989 10.0618 7.08567 9.72599 7.49989 9.72599C7.9141 9.72599 8.24989 10.0618 8.24989 10.476Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                            <text>Inappropriate Question</text>
+                        </span>
+                        <div class="flex faq-titles">
+                            <h1 class="name">Kenapa Nabil disebut "Abiegey" ?</h1>
+                        </div>
+                        <div class="question">
+                            <text>Jokes ini muncul pada Semester 1, disitu jokes yang dibuat oleh <b>Rasya</b> mulai digunakan sebagai <b>"Nickname"</b> untuk Nabil, Mengganti <b>Abieza</b> menjadi <b>Abiegey</b></text>
+                        </div>
+                    </div>
+                    <div class="outer-key">
+                        <div class="key">
+                            <span class="flex" style="flex-direction: column;">
+                                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.05005 13.5C2.05005 13.7485 2.25152 13.95 2.50005 13.95C2.74858 13.95 2.95005 13.7485 2.95005 13.5L2.95005 1.49995C2.95005 1.25142 2.74858 1.04995 2.50005 1.04995C2.25152 1.04995 2.05005 1.25142 2.05005 1.49995L2.05005 13.5ZM8.4317 11.0681C8.60743 11.2439 8.89236 11.2439 9.06809 11.0681C9.24383 10.8924 9.24383 10.6075 9.06809 10.4317L6.58629 7.94993L14.5 7.94993C14.7485 7.94993 14.95 7.74846 14.95 7.49993C14.95 7.2514 14.7485 7.04993 14.5 7.04993L6.58629 7.04993L9.06809 4.56813C9.24383 4.39239 9.24383 4.10746 9.06809 3.93173C8.89236 3.75599 8.60743 3.75599 8.4317 3.93173L5.1817 7.18173C5.00596 7.35746 5.00596 7.64239 5.1817 7.81812L8.4317 11.0681Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.95 1.50005C12.95 1.25152 12.7485 1.05005 12.5 1.05005C12.2514 1.05005 12.05 1.25152 12.05 1.50005L12.05 13.5C12.05 13.7486 12.2514 13.95 12.5 13.95C12.7485 13.95 12.95 13.7486 12.95 13.5L12.95 1.50005ZM6.5683 3.93188C6.39257 3.75614 6.10764 3.75614 5.93191 3.93188C5.75617 4.10761 5.75617 4.39254 5.93191 4.56827L8.41371 7.05007L0.499984 7.05007C0.251456 7.05007 0.0499847 7.25155 0.0499847 7.50007C0.0499846 7.7486 0.251457 7.95007 0.499984 7.95007L8.41371 7.95007L5.93191 10.4319C5.75617 10.6076 5.75617 10.8925 5.93191 11.0683C6.10764 11.244 6.39257 11.244 6.56831 11.0683L9.8183 7.81827C9.99404 7.64254 9.99404 7.35761 9.8183 7.18188L6.5683 3.93188Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                            </span>
+                            <text style="margin: 0 0 0 3px;">Tab</text>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-box flex" tabindex="1">
+                    <div class="inner-faqbox">
+                            <span style="color: lawngreen;display: flex;
+                            align-items: center;
+                            font-size: 14px;
+                            width: fit-content;">
+                            <svg width="15" style="margin: 0 5px 0 0;" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.49991 0.877045C3.84222 0.877045 0.877075 3.84219 0.877075 7.49988C0.877075 11.1575 3.84222 14.1227 7.49991 14.1227C11.1576 14.1227 14.1227 11.1575 14.1227 7.49988C14.1227 3.84219 11.1576 0.877045 7.49991 0.877045ZM1.82708 7.49988C1.82708 4.36686 4.36689 1.82704 7.49991 1.82704C10.6329 1.82704 13.1727 4.36686 13.1727 7.49988C13.1727 10.6329 10.6329 13.1727 7.49991 13.1727C4.36689 13.1727 1.82708 10.6329 1.82708 7.49988ZM10.1589 5.53774C10.3178 5.31191 10.2636 5.00001 10.0378 4.84109C9.81194 4.68217 9.50004 4.73642 9.34112 4.96225L6.51977 8.97154L5.35681 7.78706C5.16334 7.59002 4.84677 7.58711 4.64973 7.78058C4.45268 7.97404 4.44978 8.29061 4.64325 8.48765L6.22658 10.1003C6.33054 10.2062 6.47617 10.2604 6.62407 10.2483C6.77197 10.2363 6.90686 10.1591 6.99226 10.0377L10.1589 5.53774Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                            <text>Appropriate Question</text>
+                        </span>
+                        <div class="flex faq-titles">
+                            <h1 class="name">Apa itu Grup Orang Ketiga ?</h1>
+                        </div>
+                        <div class="question">
+                            <text><b>Grup Orang Ketiga</b> adalah grup gabut yang didirikan oleh <b>Faris</b> & <b>Nabil</b> dan ini membentuk kelompok tanpa seleksi.</text>
+                        </div>
+                    </div>
+                    <div class="outer-key">
+                        <div class="key">
+                            <span class="flex" style="flex-direction: column;">
+                                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.05005 13.5C2.05005 13.7485 2.25152 13.95 2.50005 13.95C2.74858 13.95 2.95005 13.7485 2.95005 13.5L2.95005 1.49995C2.95005 1.25142 2.74858 1.04995 2.50005 1.04995C2.25152 1.04995 2.05005 1.25142 2.05005 1.49995L2.05005 13.5ZM8.4317 11.0681C8.60743 11.2439 8.89236 11.2439 9.06809 11.0681C9.24383 10.8924 9.24383 10.6075 9.06809 10.4317L6.58629 7.94993L14.5 7.94993C14.7485 7.94993 14.95 7.74846 14.95 7.49993C14.95 7.2514 14.7485 7.04993 14.5 7.04993L6.58629 7.04993L9.06809 4.56813C9.24383 4.39239 9.24383 4.10746 9.06809 3.93173C8.89236 3.75599 8.60743 3.75599 8.4317 3.93173L5.1817 7.18173C5.00596 7.35746 5.00596 7.64239 5.1817 7.81812L8.4317 11.0681Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.95 1.50005C12.95 1.25152 12.7485 1.05005 12.5 1.05005C12.2514 1.05005 12.05 1.25152 12.05 1.50005L12.05 13.5C12.05 13.7486 12.2514 13.95 12.5 13.95C12.7485 13.95 12.95 13.7486 12.95 13.5L12.95 1.50005ZM6.5683 3.93188C6.39257 3.75614 6.10764 3.75614 5.93191 3.93188C5.75617 4.10761 5.75617 4.39254 5.93191 4.56827L8.41371 7.05007L0.499984 7.05007C0.251456 7.05007 0.0499847 7.25155 0.0499847 7.50007C0.0499846 7.7486 0.251457 7.95007 0.499984 7.95007L8.41371 7.95007L5.93191 10.4319C5.75617 10.6076 5.75617 10.8925 5.93191 11.0683C6.10764 11.244 6.39257 11.244 6.56831 11.0683L9.8183 7.81827C9.99404 7.64254 9.99404 7.35761 9.8183 7.18188L6.5683 3.93188Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                            </span>
+                            <text style="margin: 0 0 0 3px;">Tab</text>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="fourth" id="about">
             <div class="topcontext flex" style="width:fit-content;margin-bottom:7px;justify-content: start;border-bottom: 2.5px #fff dotted;">
                 <h1>About</h1>
             </div>
             <div class="innerthird">
                 <p>
-                    <b>Grup Orang Ketiga</b> adalah grup gabut yang didirikan oleh <b>Faris</b> & <b>Nabil</b>
-                    dan ini membentuk kelompok tanpa seleksi.
+                    This website is part of <b>The Boring Projects of HTML</b>
+                </p>
+                <p>
+                    The member profile picture will not updated.
                 </p>
             </div>
         </section>
-        <div class="social">
-            <div class="svghere">
-                <a href="https://github.com/frostmint/gruporangketiga">
-                    <svg id="github" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+        <div class="social flex">
+            <div class="links flex">
+                <a class="github" href="https://github.com/frostmint/gruporangketiga">
+                    <svg class="github-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
                     </svg>
                 </a>
-                <a href="https://twitter.com/gwfrosty_ngab">
-                    <svg  id="twitter" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
-                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"></path>
+                <a class="twitter" href="https://twitter.com/gwfrosty_ngab">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
                     </svg>
                 </a>
+                <text style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 0 0 12px;
+                ">Faris Copyright © 2022</text>
             </div>
         </div>
         <div class="wr" style="padding: 40px;"></div>
@@ -414,12 +608,20 @@
         function openSidebar() {
             const sidebar = document.getElementById("mbonly");
             sidebar.classList.toggle("showed");
+
         }
 
         const sidebar = document.getElementById("mbonly");
         sidebar.onclick = function() {
             const sidebar = document.getElementById("mbonly");
             sidebar.classList.remove("showed");
+        }
+
+        function collapse() {
+            const tds = document.getElementById("fqstr");
+            const ich = document.getElementById("ci");
+            tds.classList.toggle("collapsed")
+            ich.classList.toggle("rotated");
         }
 
     </script>
